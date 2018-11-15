@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MembersOnly</title>
+    <title>Members Only</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,6 +14,9 @@
       <%= link_to 'Sign in',  login_path %>
       <%= link_to 'Sign out', logout_path, :method => :delete %>
     </nav>
+    <% flash.each do |message_type, message| %>
+      <p><strong><%= message_type.capitalize %></strong>: <%= message %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
