@@ -7,13 +7,15 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-
+  has_many :posts
   # Downcases mail characters
   def downcase_email
     email.downcase!
   end
 
   def generate_token
-    self.remember_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
+    token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
+    self.update_attribute 'remember_token', token
+    token
   end
 end

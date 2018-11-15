@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/new'
   root 'static_pages#home'
   # resources :sessions, only: [:new, :create, :destroy]
   get    '/login',   to: 'sessions#new'

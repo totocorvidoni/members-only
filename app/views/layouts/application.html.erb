@@ -18,5 +18,7 @@
       <p><strong><%= message_type.capitalize %></strong>: <%= message %></p>
     <% end %>
     <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+    <%= debug(session[:current_user]) if Rails.env.development? %>
   </body>
 </html>
